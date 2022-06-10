@@ -55,7 +55,11 @@ As part of the results of our compromise between effective practice and well-est
 
 ## Existing Efforts in AI De-biasing
 ### Data-level AI De-biasing
-Expanding upon our discussion in the previous section, we hereby discuss existing works that try to address and mitigate dataset bias by constructing balanced datasets and incorporating more attributes/features which were historically underrepresented. As a typical one of them:
+Expanding upon our discussion in the previous section, we hereby discuss existing works that try to address and mitigate dataset bias by constructing balanced datasets and incorporating more attributes/features which were historically underrepresented. 
+
+#### Dataset De-bias methods for classification tasks
+
+In this paper [13], the authors compared several different methods for removing bias from the training dataset. The first method is called Massaging the dataset, where the dataset is balanced by relabeling some data points in each of the prioritized group and the bias group. A bias ranker is learned to predict without considering the protected attributes. Then this ranker is further used to rank the complete data-points, and promote or demote them to a different class, in order the maintain the balance between different groups. The alternative method is to assign weights to data-points in the training set instead of direct changing their labels. Moreover, if the learning algorithm can not directly work with weighted data, then Preferential Sampling is an alternative method to consider. Preferential sampling uses a ranker to decide which objects are at the border of decision boundary. Then based on the idea that data point that is close to the decision boundary are more likely to be affected by the bias, the discriminated positive objects and privileged negative objects are duplicated, or the discriminated negative and privileged positive objects are skipped, the operation is iteratively performed until a balanced dataset is obtained. Experiments proved that these method all works effectively in removing bias from the training dataset, and it is hard to decide a best method without consider the context.
 
 #### Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification
 This work was the first of its kind comprehensive study of the performance of commercially available computer vision models on various intersectional categories in existing datasets and the extent to which a Computer Vision model amplifies bias in an unbalanced dataset. The authors highlight the point that since more and more decisions in various areas like hiring, granting loans, and recidivism scores are handled by AI, it is of paramount importance to accept and expand upon the progress in bias identification and mitigation. This is in alignment with the concerns that we are trying to address in this module survey.
@@ -181,5 +185,7 @@ Unfortunately, up to now, addressing the AI Bias problem is still beyond the bes
 [11] Buolamwini, Joy, and Timnit Gebru. "Gender shades: Intersectional accuracy disparities in commercial gender classification." Conference on fairness, accountability and transparency. PMLR, 2018.
 
 [12] Barocas, Solon, Moritz Hardt, and Arvind Narayanan. "Fairness in machine learning." Nips tutorial 1 (2017): 2.
+
+[13] Kamiran, F., Calders, T. Data preprocessing techniques for classification without discrimination. Knowl Inf Syst 33, 1–33 (2012).
 
 ---
